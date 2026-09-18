@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Fabiola Hajrulla | Portfolio</title>
+  <title>Fabiola Hajrulla | Digital Marketing Portfolio</title>
 
   <style>
     * {
@@ -59,7 +59,7 @@
       padding: 0 8%;
     }
 
-    .hero p:first-child {
+    .eyebrow {
       text-transform: uppercase;
       letter-spacing: 3px;
       font-size: 12px;
@@ -96,50 +96,121 @@
     h2 {
       font-family: Georgia, "Times New Roman", serif;
       font-weight: normal;
-      font-size: 45px;
+      font-size: clamp(40px, 5vw, 60px);
       margin-bottom: 35px;
     }
 
     .about-text {
-      max-width: 700px;
+      max-width: 760px;
       font-size: 19px;
       line-height: 1.8;
     }
 
+    /* PROJECTS */
+
     .projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
+      display: flex;
+      flex-direction: column;
     }
 
     .project {
-      min-height: 260px;
-      border: 1px solid #d8d1c8;
-      padding: 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      transition: 0.3s ease;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 70px;
+      align-items: center;
+      padding: 75px 0;
+      border-bottom: 1px solid #d8d1c8;
     }
 
-    .project:hover {
-      transform: translateY(-5px);
-      background: #eee8df;
+    .project:first-child {
+      padding-top: 20px;
     }
 
-    .project span {
-      font-size: 11px;
+    .project:nth-child(even) .project-images {
+      order: 2;
+    }
+
+    .project-images {
+      display: grid;
+      gap: 12px;
+    }
+
+    .project-images.two {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .project-images.email {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+    }
+
+    .project-images img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-images.two img {
+      height: 430px;
+    }
+
+    .project-images.email img:first-child {
+      height: 480px;
+    }
+
+    .project-images.email img:last-child {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .project-type {
+      display: block;
       text-transform: uppercase;
       letter-spacing: 2px;
+      font-size: 11px;
       color: #77706a;
-      margin-bottom: 10px;
+      margin-bottom: 18px;
     }
 
-    .project h3 {
+    .project-info h3 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 27px;
+      font-size: clamp(30px, 4vw, 48px);
       font-weight: normal;
+      line-height: 1.1;
+      margin-bottom: 22px;
     }
+
+    .brand {
+      font-size: 13px;
+      color: #77706a;
+      margin-bottom: 25px;
+    }
+
+    .project-description {
+      max-width: 520px;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .role {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #655e59;
+      margin-bottom: 25px;
+    }
+
+    .project-link {
+      display: inline-block;
+      color: #24211f;
+      text-decoration: none;
+      border-bottom: 1px solid #24211f;
+      padding-bottom: 4px;
+      font-size: 13px;
+    }
+
+    /* SKILLS */
 
     .skills {
       display: flex;
@@ -154,22 +225,31 @@
       font-size: 13px;
     }
 
+    /* CONTACT */
+
     .contact {
       min-height: 55vh;
     }
 
     .contact h2 {
-      max-width: 750px;
+      max-width: 800px;
       font-size: clamp(40px, 6vw, 75px);
+    }
+
+    .contact p {
+      max-width: 600px;
+      color: #655e59;
+      margin-bottom: 25px;
     }
 
     .contact a {
       display: inline-block;
-      margin-top: 25px;
+      margin-right: 25px;
       color: #24211f;
       text-decoration: none;
       border-bottom: 1px solid #24211f;
       padding-bottom: 5px;
+      font-size: 14px;
     }
 
     footer {
@@ -180,13 +260,23 @@
       justify-content: space-between;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 850px) {
+
       nav ul {
         display: none;
       }
 
-      .projects {
+      .project {
         grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .project:nth-child(even) .project-images {
+        order: 0;
+      }
+
+      .project-images img {
+        height: auto !important;
       }
 
       .hero h1 {
@@ -196,13 +286,33 @@
       section {
         padding: 75px 7%;
       }
+
+      .project-images.two,
+      .project-images.email {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      .project-images.two,
+      .project-images.email {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 
+
 <body>
 
   <nav>
+
     <div class="logo">FH</div>
 
     <ul>
@@ -211,21 +321,31 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
   </nav>
 
 
   <main>
 
-    <div class="hero">
-      <p>Digital Marketing Portfolio</p>
+    <!-- HERO -->
 
-      <h1>Fabiola<br>Hajrulla</h1>
+    <div class="hero">
+
+      <p class="eyebrow">Digital Marketing Portfolio</p>
+
+      <h1>
+        Fabiola<br>
+        Hajrulla
+      </h1>
 
       <p class="subtitle">
         Digital Marketing · Content Creation · Brand Communication
       </p>
+
     </div>
 
+
+    <!-- ABOUT -->
 
     <section id="about">
 
@@ -234,15 +354,18 @@
       <h2>About me</h2>
 
       <p class="about-text">
-        I am a digital marketing professional with an interest in content,
-        brand communication and the way businesses connect with their
-        audiences online. My work combines creativity with a practical
-        understanding of digital marketing, customer communication and
-        content strategy.
+        I work across digital marketing, content creation and brand
+        communication, with a particular interest in turning ideas into
+        clear and engaging digital experiences. My work includes social
+        media content, copywriting, SEO, email marketing and customer
+        communication — combining creative thinking with a practical
+        understanding of how brands connect with their audiences online.
       </p>
 
     </section>
 
+
+    <!-- WORK -->
 
     <section id="work">
 
@@ -250,32 +373,216 @@
 
       <h2>Selected work</h2>
 
+
       <div class="projects">
 
-        <div class="project">
-          <span>Social Media</span>
-          <h3>Content Creation & Social Media</h3>
-        </div>
 
-        <div class="project">
-          <span>Content</span>
-          <h3>Copywriting & SEO Content</h3>
-        </div>
+        <!-- SOCIAL MEDIA -->
 
-        <div class="project">
-          <span>Campaigns</span>
-          <h3>Email Marketing & Campaign Concepts</h3>
-        </div>
+        <article class="project">
 
-        <div class="project">
-          <span>Customer Marketing</span>
-          <h3>CRM & Customer Communication</h3>
-        </div>
+          <div class="project-images two">
+
+            <img
+              src="social-trends-cover.jpg"
+              alt="Beauty Trends 2016 vs 2026 social media content">
+
+            <img
+              src="dark-circles-content.jpg"
+              alt="Dark circles educational social media content">
+
+          </div>
+
+
+          <div class="project-info">
+
+            <span class="project-type">
+              Social Media Content
+            </span>
+
+            <h3>
+              Educational & Trend-Based Content
+            </h3>
+
+            <p class="brand">
+              Koral Secrets
+            </p>
+
+            <p class="project-description">
+              Social media concepts developed around beauty trends and
+              educational skincare topics, translating research into
+              accessible and visually engaging content for a beauty audience.
+            </p>
+
+            <p class="role">
+              <strong>My contribution</strong><br>
+              Concept Development · Research · Copywriting · Content Direction
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- REEL -->
+
+        <article class="project">
+
+          <div class="project-images">
+
+            <img
+              src="pdrn-reel(1).jpg"
+              alt="FRANKLY PDRN Bounce Ball Serum Instagram Reel">
+
+          </div>
+
+
+          <div class="project-info">
+
+            <span class="project-type">
+              Short-Form Video
+            </span>
+
+            <h3>
+              FRANKLY PDRN Bounce Ball Serum
+            </h3>
+
+            <p class="brand">
+              Koral Secrets · Instagram Reel
+            </p>
+
+            <p class="project-description">
+              Educational short-form content created to introduce the
+              product's dual-phase PDRN formula in an engaging and
+              easy-to-understand format. The concept combines product
+              demonstration with concise, benefit-driven messaging.
+            </p>
+
+            <p class="role">
+              <strong>My contribution</strong><br>
+              Concept Development · Product Research · Content Idea · Copywriting
+            </p>
+
+            <a
+              class="project-link"
+              href="https://www.instagram.com/reel/DOyZbvbiFVc/"
+              target="_blank"
+              rel="noopener">
+              View Reel ↗
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- BLOG -->
+
+        <article class="project">
+
+          <div class="project-images">
+
+            <img
+              src="korean-supplements.jpg"
+              alt="Korean Supplements blog article">
+
+          </div>
+
+
+          <div class="project-info">
+
+            <span class="project-type">
+              Blog & SEO Content
+            </span>
+
+            <h3>
+              Korean Beauty Supplements
+            </h3>
+
+            <p class="brand">
+              Koral Secrets
+            </p>
+
+            <p class="project-description">
+              An informative long-form article exploring Korean beauty
+              supplements, how they work and how different options relate
+              to specific beauty and wellness needs. The content was
+              structured to make a research-heavy topic clear and accessible.
+            </p>
+
+            <p class="role">
+              <strong>My contribution</strong><br>
+              Research · Content Writing · SEO Copywriting · Content Structure
+            </p>
+
+            <a
+              class="project-link"
+              href="https://koralsecrets.al/blogs/news/suplementet-koreane-cfare-jane-si-funksionojne-dhe-a-ja-vlejne"
+              target="_blank"
+              rel="noopener">
+              Read Article ↗
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- EMAIL -->
+
+        <article class="project">
+
+          <div class="project-images email">
+
+            <img
+              src="email-campaign-main.jpg"
+              alt="Product Exchange Campaign creative">
+
+            <img
+              src="email-campaign-mobile.jpg"
+              alt="Email campaign mobile execution">
+
+          </div>
+
+
+          <div class="project-info">
+
+            <span class="project-type">
+              Email Marketing
+            </span>
+
+            <h3>
+              Product Exchange Campaign
+            </h3>
+
+            <p class="brand">
+              Koral Secrets
+            </p>
+
+            <p class="project-description">
+              Email campaign developed to communicate an in-store product
+              exchange promotion to the existing customer community. The
+              campaign combined a clear promotional concept with concise
+              messaging and a direct call to action.
+            </p>
+
+            <p class="role">
+              <strong>My contribution</strong><br>
+              Campaign Concept · Email Copywriting · Content Structure ·
+              Customer Communication
+            </p>
+
+          </div>
+
+        </article>
+
 
       </div>
 
     </section>
 
+
+    <!-- SKILLS -->
 
     <section id="skills">
 
@@ -284,6 +591,7 @@
       <h2>What I work with</h2>
 
       <div class="skills">
+
         <div class="skill">Digital Marketing</div>
         <div class="skill">Content Creation</div>
         <div class="skill">Social Media</div>
@@ -292,10 +600,13 @@
         <div class="skill">Email Marketing</div>
         <div class="skill">CRM</div>
         <div class="skill">Brand Communication</div>
+
       </div>
 
     </section>
 
+
+    <!-- CONTACT -->
 
     <section id="contact" class="contact">
 
@@ -303,17 +614,27 @@
 
       <h2>Let's create something meaningful.</h2>
 
-      <a href="#">View Resume →</a>
+      <p>
+        Interested in working together or learning more about my experience?
+        Feel free to get in touch.
+      </p>
 
+     <a href="mailto:hajrullafabiola@gmail.com">
+  Email me ↗
+</a>
     </section>
 
   </main>
 
 
   <footer>
+
     <span>Fabiola Hajrulla</span>
-    <span>Digital Marketing Portfolio</span>
+
+    <span>Digital Marketing & Content Portfolio</span>
+
   </footer>
 
 </body>
+
 </html>
